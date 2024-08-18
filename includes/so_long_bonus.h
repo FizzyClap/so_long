@@ -6,7 +6,7 @@
 /*   By: roespici <roespici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:05:24 by roespici          #+#    #+#             */
-/*   Updated: 2024/08/06 10:32:49 by roespici         ###   ########.fr       */
+/*   Updated: 2024/08/18 14:57:31 by roespici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ typedef struct s_game
 	int			event;
 	int			ennemy_exist;
 	t_map		*map;
-	t_camera	camera;
 	t_music		*music;
 }	t_game;
 

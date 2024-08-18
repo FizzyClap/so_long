@@ -1,3 +1,11 @@
+NAME = libft.a
+CC = cc
+FLAGS = -Wall -Wextra -Werror
+RM = rm -f
+GREEN = \033[0;32m
+RED = \033[0;31m
+BLUE = \033[38;5;153m
+
 SRCS = src/ft_atoi.c\
 	src/ft_bzero.c\
 	src/ft_calloc.c\
@@ -46,24 +54,28 @@ SRCS = src/ft_atoi.c\
 	src/ft_lstnew.c\
 	src/ft_lstsize.c\
 
-COMPILE = cc
-FLAGS = -Wall -Wextra -Werror
-NAME = libft.a
-RM = rm -f
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@echo "$(BLUE)Compilating $(NAME) in progress..."
+	@ar rcs $(NAME) $(OBJS) || \
+	{ echo "$(RED)Compiling of $(NAME) failed, FF."; exit 1; }
+	@echo "$(GREEN)Compilation of $(NAME) completed!"
 
 .c.o:
-	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) $(FLAGS) -c $< -o $(<:.c=.o) || \
+	{ echo "$(RED)Compiling of $< failed, FF."; exit 1; }
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	@echo "$(BLUE)Cleaning $(NAME) objects in progress..."
+	@$(RM) $(OBJS)
+	@echo "$(GREEN)Cleaning of $(NAME) objects completed!"
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "$(BLUE)Cleaning $(NAME) in progress..."
+	@$(RM) $(NAME)
+	@echo "$(GREEN)Cleaning of $(NAME) completed!"
 
 re: fclean all
